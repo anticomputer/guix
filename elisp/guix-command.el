@@ -62,7 +62,7 @@
 ;;; Code:
 
 (require 'cl-lib)
-(require 'magit-popup)
+(require 'transient)
 (require 'bui-utils)
 (require 'guix nil t)
 (require 'guix-utils)
