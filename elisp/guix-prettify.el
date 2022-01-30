@@ -90,7 +90,7 @@ disabling `guix-prettify-mode' a little faster."
 
   (rx-to-string `(and "/" (or "store" "log"
                               (and "nar" (zero-or-one
-                                          (or "/lzip" "/gzip"))))
+                                          (or "/lzip" "/gzip" "/zstd"))))
                       "/" (group (regexp ,guix-hash-regexp)))
                 t)
   "Regexp matching file names for prettifying.
