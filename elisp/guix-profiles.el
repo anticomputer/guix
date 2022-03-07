@@ -44,6 +44,10 @@
   (expand-file-name "~/.guix-profile")
   "User profile.")
 
+(defvar guix-home-profile
+  (expand-file-name "guix-home" (guix-user-profiles-directory))
+  "Home profile.")
+
 (defvar guix-system-profile
   (expand-file-name "system" (guix-profiles-directory))
   "System profile.")
@@ -83,6 +87,10 @@ It is used by various commands as the default working profile.")
                 t)
   "Regexp matching system profiles.")
 
+(defvar guix-home-profile-regexp
+  (rx-to-string guix-home-profile)
+  "Regexp maching Home profiles.")
+
 (defvar guix-pulled-profile-regexp
   ;; XXX Should profiles from other users (HOME directories) be handled?
   (rx-to-string `(or ,guix-pulled-profile
@@ -104,6 +112,10 @@ The first parenthesized group should match profile file name.")
 (defun guix-system-profile? (profile)
   "Return non-nil, if PROFILE is a system one."
   (string-match-p guix-system-profile-regexp profile))
+
+(defun guix-home-profile? (profile)
+  "Return non-nil, if PROFILE is a Home one."
+  (string-match-p guix-home-profile-regexp profile))
 
 (defun guix-pulled-profile? (profile)
   "Return non-nil, if PROFILE is populated by 'guix pull'."
@@ -146,13 +158,15 @@ and `guix-default-user-profile' instead of `guix-user-profile'."
 The returned file name is the one that have generations in the
 same parent directory.
 
-If PROFILE matches `guix-system-profile-regexp', then it is
-considered to be a system profile.  Unlike usual profiles, for a
-system profile, packages are placed in 'profile' sub-directory,
-so the returned file name does not contain this potential
-trailing '/profile'."
+If PROFILE matches `guix-system-profile-regexp' or
+`guix-home-profile-regexp', then it is considered to be a system
+or home profile.  Unlike usual profiles, for a system/home
+profile, packages are placed in 'profile' sub-directory, so the
+returned file name does not contain this potential trailing
+'/profile'."
   (let* ((profile (guix-profile profile))
-         (profile (if (and (guix-system-profile? profile)
+         (profile (if (and (or (guix-system-profile? profile)
+			       (guix-home-profile? profile))
                            (string-match (rx (group (* any))
                                              "/profile" string-end)
                                          profile))
@@ -166,13 +180,14 @@ trailing '/profile'."
   "Return file name of PROFILE or its GENERATION.
 The returned file name is the one where packages are installed.
 
-If PROFILE is a system one (see `guix-generation-profile'), then
+If PROFILE is a system or a home one (see `guix-generation-profile'), then
 the returned file name ends with '/profile'."
   (let* ((profile (guix-generation-profile profile))
          (profile (if generation
                       (guix-generation-file profile generation)
                     profile)))
-    (if (guix-system-profile? profile)
+    (if (or (guix-system-profile? profile)
+	    (guix-home-profile? profile))
         (expand-file-name "profile" profile)
       profile)))
 

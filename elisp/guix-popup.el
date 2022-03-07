@@ -139,6 +139,7 @@ This function is used by command `guix-package-popup'."
   :actions '("Show profiles"
              (?a "all" guix-profiles)
              (?s "system" guix-system-profile)
+	     (?h "home" guix-home-profile)
              (?c "current" guix-current-profile)
              "Show generations (of the current profile)"
              (?g "all" guix-generations)

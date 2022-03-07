@@ -61,6 +61,7 @@ properly.")
               (-cons* guix-default-user-profile
                       guix-default-pulled-profile
                       guix-system-profile
+		      guix-home-profile
                       (--when-let (getenv "GUIX_PROFILE")
                         (guix-file-name it))
                       (guix-eval-read "(user-profiles)")))))))
@@ -382,6 +383,13 @@ Modify `guix-profiles' variable to add more profiles."
   (interactive)
   (bui-get-display-entries 'guix-profile 'info
                            (list 'profile guix-system-profile)))
+
+;;;###autoload
+(defun guix-home-profile ()
+  "Display interface for `guix-home-profile'."
+  (interactive)
+  (bui-get-display-entries 'guix-profile 'info
+                           (list 'profile guix-home-profile)))
 
 ;;;###autoload
 (defun guix-current-profile ()
