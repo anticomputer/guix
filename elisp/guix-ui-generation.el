@@ -264,18 +264,16 @@ current profile's GENERATION."
             (number-of-packages . "Packages"))
   :hint 'guix-generation-list-hint
   :sort-key '(number . t)
-  :marks '((delete . ?D)))
-
-(let ((map guix-generation-list-mode-map))
-  (define-key map (kbd "E")   'guix-generation-list-show-search-paths)
-  (define-key map (kbd "P")   'guix-generation-list-show-packages)
-  (define-key map (kbd "+")   'guix-generation-list-show-added-packages)
-  (define-key map (kbd "-")   'guix-generation-list-show-removed-packages)
-  (define-key map (kbd "=")   'guix-generation-list-diff)
-  (define-key map (kbd "e")   'guix-generation-list-ediff)
-  (define-key map (kbd "x")   'guix-generation-list-execute)
-  (define-key map (kbd "c")   'guix-generation-list-set-current)
-  (define-key map (kbd "d")   'guix-generation-list-mark-delete))
+  :marks '((delete . ?D))
+  :bindings '(("E" guix-generation-list-show-search-paths)
+              ("P" guix-generation-list-show-packages)
+              ("+" guix-generation-list-show-added-packages)
+              ("-" guix-generation-list-show-removed-packages)
+              ("=" guix-generation-list-diff)
+              ("e" guix-generation-list-ediff)
+              ("x" guix-generation-list-execute)
+              ("c" guix-generation-list-set-current)
+              ("d" guix-generation-list-mark-delete)))
 
 (defvar guix-generation-list-default-hint
   '(("\\[guix-generation-list-show-packages]") " show packages;\n"

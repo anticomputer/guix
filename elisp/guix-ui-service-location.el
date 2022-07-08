@@ -47,13 +47,11 @@
             (number-of-services nil 10 bui-list-sort-numerically-1
                                 :right-align t))
   :hint 'guix-service-location-list-hint
-  :sort-key '(location))
-
-(let ((map guix-service-location-list-mode-map))
-  (define-key map (kbd "RET") 'guix-service-location-list-show-services)
-  (define-key map (kbd "e")   'guix-service-location-list-edit)
-  ;; "Location Info" buffer is not defined.
-  (define-key map (kbd "i") nil))
+  :sort-key '(location)
+  :bindings '(("RET" guix-service-location-list-show-services)
+              ("e" guix-service-location-list-edit)
+              ;; "Location Info" buffer is not defined.
+              ("i" nil)))
 
 (defvar guix-service-location-list-default-hint
   '(("\\[guix-service-location-list-show-services]") " show services;\n"

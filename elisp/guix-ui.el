@@ -169,6 +169,8 @@ Optional keywords:
   - `:required' - default value of the generated
     `guix-TYPE-required-params' variable.
 
+  - `:bindings' - key bindings.
+
 The rest keyword arguments are passed to `bui-define-interface'
 macro.
 
@@ -189,12 +191,16 @@ Along with the mentioned definitions, this macro also defines:
          (buffer-name-fun (intern (concat prefix "-buffer-name"))))
     (bui-plist-let args
         ((buffer-name-val :buffer-name)
-         (required-val    :required ''(id)))
+         (required-val    :required ''(id))
+         (bindings        :bindings))
       `(progn
          (defvar ,mode-map
            (let ((map (make-sparse-keymap)))
              (set-keymap-parent
               map (make-composed-keymap guix-ui-map ,parent-map))
+             ,@(mapcar (pcase-lambda (`(,key ,def))
+                         `(define-key map (kbd ,key) ',def))
+                       (eval bindings))
              map)
            ,(format "Keymap for `%s' buffers." mode-str))
 

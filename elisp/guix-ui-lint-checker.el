@@ -71,12 +71,10 @@ SEARCH-TYPE may be one of the following symbols: `all', `local',
   :format '((name nil 30 t)
             (type nil 10 t)
             (description nil 50 t))
-  :hint 'guix-lint-checker-list-hint)
-
-(let ((map guix-lint-checker-list-mode-map))
-  (define-key map (kbd "i") nil)
-  (define-key map (kbd "RET") nil)
-  (define-key map (kbd "L") 'guix-lint-checker-list-lint))
+  :hint 'guix-lint-checker-list-hint
+  :bindings '(("i"   nil)
+              ("RET" nil)
+              ("L"   guix-lint-checker-list-lint)))
 
 (defvar guix-lint-checker-list-default-hint
   '(("\\[guix-lint-checker-list-lint]") " lint packages;\n"))

@@ -119,11 +119,9 @@ SEARCH-TYPE may be one of the following symbols: `all', `id', `name'."
             (url bui-list-get-url 50 t))
   :titles '((name . "License"))
   :hint 'guix-license-list-hint
-  :sort-key '(name))
-
-(let ((map guix-license-list-mode-map))
-  (define-key map (kbd "e")   'guix-license-list-edit)
-  (define-key map (kbd "P")   'guix-license-list-show-packages))
+  :sort-key '(name)
+  :bindings '(("e" guix-license-list-edit)
+              ("P" guix-license-list-show-packages)))
 
 (defvar guix-license-list-default-hint
   '(("\\[guix-license-list-show-packages]") " show packages;\n"

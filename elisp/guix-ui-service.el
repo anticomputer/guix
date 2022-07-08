@@ -190,7 +190,8 @@ identifying an entry.")
             (location guix-location-list-specification 35 t)
             (description bui-list-get-one-line 30 t))
   :sort-key '(name)
-  :hint 'guix-service-list-hint)
+  :hint 'guix-service-list-hint
+  :bindings '(("e" guix-service-list-edit)))
 
 (defvar guix-service-list-required-params
   '(id)
@@ -200,9 +201,6 @@ along with the displayed parameters.
 
 Do not remove `id' from this list as it is required for
 identifying an entry.")
-
-(let ((map guix-service-list-mode-map))
-  (define-key map (kbd "e") 'guix-service-list-edit))
 
 (defvar guix-service-list-default-hint
   '(("\\[guix-service-list-edit]") " edit (go to) the service definition;\n"))

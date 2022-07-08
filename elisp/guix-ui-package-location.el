@@ -47,15 +47,13 @@
             (number-of-packages nil 10 bui-list-sort-numerically-1
                                 :right-align t))
   :hint 'guix-package-location-list-hint
-  :sort-key '(location))
-
-(let ((map guix-package-location-list-mode-map))
-  (define-key map (kbd "RET") 'guix-package-location-list-show-packages)
-  (define-key map (kbd "P")   'guix-package-location-list-show-packages)
-  (define-key map (kbd "e")   'guix-package-location-list-edit)
-  ;; "Location Info" buffer is not defined (it would be useless), so
-  ;; unbind "i" key (by default, it is used to display Info buffer).
-  (define-key map (kbd "i") nil))
+  :sort-key '(location)
+  :bindings '(("RET" guix-package-location-list-show-packages)
+              ("P"   guix-package-location-list-show-packages)
+              ("e"   guix-package-location-list-edit)
+              ;; "Location Info" buffer is not defined (it would be useless), so
+              ;; unbind "i" key (by default, it is used to display Info buffer).
+              ("i" nil)))
 
 (defvar guix-package-location-list-default-hint
   '(("\\[guix-package-location-list-show-packages]") " show packages;\n"

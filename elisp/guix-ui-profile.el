@@ -122,14 +122,12 @@ are multiple entries, prompt for a profile name and return it."
             (number-of-generations nil 14 bui-list-sort-numerically-3
                                    :right-align t))
   :hint 'guix-profile-list-hint
-  :sort-key '(profile))
-
-(let ((map guix-profile-list-mode-map))
-  (define-key map (kbd "E") 'guix-profile-list-show-search-paths)
-  (define-key map (kbd "P") 'guix-profile-list-show-packages)
-  (define-key map (kbd "G") 'guix-profile-list-show-generations)
-  (define-key map (kbd "M") 'guix-profile-list-apply-manifest)
-  (define-key map (kbd "c") 'guix-profile-list-set-current))
+  :sort-key '(profile)
+  :bindings '(("E" guix-profile-list-show-search-paths)
+              ("P" guix-profile-list-show-packages)
+              ("G" guix-profile-list-show-generations)
+              ("M" guix-profile-list-apply-manifest)
+              ("c" guix-profile-list-set-current)))
 
 (defvar guix-profile-list-default-hint
   '(("\\[guix-profile-list-show-packages]") " show packages;\n"
@@ -224,14 +222,12 @@ If nothing is marked, use profile on the current line."
              format guix-profile-info-insert-number-of-packages)
             (number-of-generations
              format guix-profile-info-insert-number-of-generations))
-  :hint 'guix-profile-info-hint)
-
-(let ((map guix-profile-info-mode-map))
-  (define-key map (kbd "E") 'guix-profile-info-show-search-paths)
-  (define-key map (kbd "P") 'guix-profile-info-show-packages)
-  (define-key map (kbd "G") 'guix-profile-info-show-generations)
-  (define-key map (kbd "M") 'guix-profile-info-apply-manifest)
-  (define-key map (kbd "c") 'guix-profile-info-set-current))
+  :hint 'guix-profile-info-hint
+  :bindings '(("E" guix-profile-info-show-search-paths)
+              ("P" guix-profile-info-show-packages)
+              ("G" guix-profile-info-show-generations)
+              ("M" guix-profile-info-apply-manifest)
+              ("c" guix-profile-info-set-current)))
 
 (defvar guix-profile-info-default-hint
   '(("\\[guix-profile-info-show-packages]") " show packages;\n"

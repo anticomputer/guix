@@ -306,7 +306,15 @@ See `guix-store-item-info-insert-type-button' for the meaning of TYPE."
             (size nil 20 bui-list-sort-numerically-1 :right-align t))
   :hint 'guix-store-item-list-hint
   :sort-key '(size . t)
-  :marks '((delete . ?D)))
+  :marks '((delete . ?D))
+  :bindings '(("e" guix-store-item-list-edit)
+              ("d" guix-store-item-list-mark-delete)
+              ("f" guix-store-item-list-referrers)
+              ("F" guix-store-item-list-references)
+              ("D" guix-store-item-list-derivers)
+              ("R" guix-store-item-list-requisites)
+              ("z" guix-store-item-list-size)
+              ("x" guix-store-item-list-execute)))
 
 (defvar guix-store-item-list-required-params
   '(id)
@@ -316,16 +324,6 @@ along with the displayed parameters.
 
 Do not remove `id' from this list as it is required for
 identifying an entry.")
-
-(let ((map guix-store-item-list-mode-map))
-  (define-key map (kbd "e") 'guix-store-item-list-edit)
-  (define-key map (kbd "d") 'guix-store-item-list-mark-delete)
-  (define-key map (kbd "f") 'guix-store-item-list-referrers)
-  (define-key map (kbd "F") 'guix-store-item-list-references)
-  (define-key map (kbd "D") 'guix-store-item-list-derivers)
-  (define-key map (kbd "R") 'guix-store-item-list-requisites)
-  (define-key map (kbd "z") 'guix-store-item-list-size)
-  (define-key map (kbd "x") 'guix-store-item-list-execute))
 
 (defvar guix-store-item-list-default-hint
   '(("\\[guix-store-item-list-edit]") " go to the current store item;\n"

@@ -277,8 +277,16 @@ ENTRIES is a list of package entries to get info about packages."
   :hint 'guix-package-info-hint
   :titles '((home-url . "Home page")
             (systems . "Supported systems"))
-  :required '(id name version installed non-unique known-status
-              superseded hidden))
+  :required '( id name version installed non-unique known-status
+               superseded hidden)
+  :bindings '(("i" guix-package-info-install)
+              ("d" guix-package-info-delete)
+              ("U" guix-package-info-upgrade)
+              ("u" guix-package-info-upgrade)
+              ("e" guix-package-info-edit)
+              ("G" guix-package-info-graph)
+              ("z" guix-package-info-size)
+              ("L" guix-package-info-lint)))
 
 ;; Additional info for installed outputs.
 (bui-define-interface guix-installed-output info
@@ -293,16 +301,6 @@ ENTRIES is a list of package entries to get info about packages."
             (branch format (format))
             (commit format (format)))
   :reduced? t)
-
-(let ((map guix-package-info-mode-map))
-  (define-key map (kbd "i") 'guix-package-info-install)
-  (define-key map (kbd "d") 'guix-package-info-delete)
-  (define-key map (kbd "U") 'guix-package-info-upgrade)
-  (define-key map (kbd "u") 'guix-package-info-upgrade)
-  (define-key map (kbd "e") 'guix-package-info-edit)
-  (define-key map (kbd "G") 'guix-package-info-graph)
-  (define-key map (kbd "z") 'guix-package-info-size)
-  (define-key map (kbd "L") 'guix-package-info-lint))
 
 (defvar guix-package-info-default-hint
   '(("\\[guix-package-info-edit]") " edit (go to) the package definition;\n"
@@ -1047,19 +1045,17 @@ more than one)."
   :sort-key '(name)
   :marks '((install . ?I)
            (upgrade . ?U)
-           (delete  . ?D)))
-
-(let ((map guix-package-list-mode-map))
-  (define-key map (kbd "B")   'guix-package-list-latest-builds)
-  (define-key map (kbd "G")   'guix-package-list-graph)
-  (define-key map (kbd "z")   'guix-package-list-size)
-  (define-key map (kbd "L")   'guix-package-list-lint)
-  (define-key map (kbd "e")   'guix-package-list-edit)
-  (define-key map (kbd "x")   'guix-package-list-execute)
-  (define-key map (kbd "i")   'guix-package-list-mark-install)
-  (define-key map (kbd "d")   'guix-package-list-mark-delete)
-  (define-key map (kbd "U")   'guix-package-list-mark-upgrade)
-  (define-key map (kbd "^")   'guix-package-list-mark-upgrades))
+           (delete  . ?D))
+  :bindings '(("B" guix-package-list-latest-builds)
+	      ("G" guix-package-list-graph)
+	      ("z" guix-package-list-size)
+	      ("L" guix-package-list-lint)
+	      ("e" guix-package-list-edit)
+	      ("x" guix-package-list-execute)
+	      ("i" guix-package-list-mark-install)
+	      ("d" guix-package-list-mark-delete)
+	      ("U" guix-package-list-mark-upgrade)
+	      ("^" guix-package-list-mark-upgrades)))
 
 (defface guix-package-list-installed
   '((t :inherit guix-package-info-installed-outputs))
@@ -1362,19 +1358,17 @@ Interactively, with prefix argument, prompt for NUMBER and ARGS."
   :sort-key '(name)
   :marks '((install . ?I)
            (upgrade . ?U)
-           (delete  . ?D)))
-
-(let ((map guix-output-list-mode-map))
-  (define-key map (kbd "B")   'guix-package-list-latest-builds)
-  (define-key map (kbd "G")   'guix-output-list-graph)
-  (define-key map (kbd "z")   'guix-package-list-size)
-  (define-key map (kbd "L")   'guix-output-list-lint)
-  (define-key map (kbd "e")   'guix-output-list-edit)
-  (define-key map (kbd "x")   'guix-output-list-execute)
-  (define-key map (kbd "i")   'guix-output-list-mark-install)
-  (define-key map (kbd "d")   'guix-output-list-mark-delete)
-  (define-key map (kbd "U")   'guix-output-list-mark-upgrade)
-  (define-key map (kbd "^")   'guix-output-list-mark-upgrades))
+           (delete  . ?D))
+  :bindings '(("B" guix-package-list-latest-builds)
+	      ("G" guix-output-list-graph)
+	      ("z" guix-package-list-size)
+	      ("L" guix-output-list-lint)
+	      ("e" guix-output-list-edit)
+	      ("x" guix-output-list-execute)
+	      ("i" guix-output-list-mark-install)
+	      ("d" guix-output-list-mark-delete)
+	      ("U" guix-output-list-mark-upgrade)
+	      ("^" guix-output-list-mark-upgrades)))
 
 (defvar guix-output-list-default-hint
   '(("\\[guix-output-list-edit]") " edit (go to) the package definition;\n"
