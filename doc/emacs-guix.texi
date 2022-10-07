@@ -176,7 +176,7 @@ from the Guix Guile code.  So without Geiser, you can use the same
 features as without Guix.
 
 @item
-@uref{https://github.com/magnars/dash.el, dash library}, version
+@uref{https://github.com/magnars/dash.el, Dash library}, version
 2.11.0 or later.
 
 @item
@@ -185,13 +185,12 @@ features as without Guix.
 interfaces (to display packages, generations, licenses, etc.).
 
 @item
-@uref{https://github.com/magit/magit-popup, magit-popup library}.  You
-already have this library if you use Magit 2.1.0 or later.  This
+@uref{https://github.com/magit/magit-popup, Magit-Popup library}.  This
 library is required only for @kbd{M-x@tie{}guix} command (@pxref{Popup
 Interface}).
 
 @item
-@uref{https://github.com/Fanael/edit-indirect, edit-indirect library},
+@uref{https://github.com/Fanael/edit-indirect, Edit-Indirect library},
 version 0.1.4 or later.  It is used only to edit synopsis/description
 in @code{guix-devel-mode} (@pxref{Development}).
 
@@ -1068,7 +1067,7 @@ intuitive.
 
 @findex guix
 So, @kbd{M-x@tie{}guix} command provides a top-level popup interface
-for almost all the available Emacs-Guix commands.  It has 2 advantages
+for almost all the available Emacs-Guix commands.  It has two advantages
 comparing with calling @kbd{M-x@tie{}guix-@dots{}} commands directly:
 
 @itemize
@@ -1097,7 +1096,7 @@ easy accessible key combination, for example, to @kbd{@key{super}-g}:
 
 @findex guix-command
 There is one rather special sub-popup in @kbd{M-x@tie{}guix}.  It is
-bind to @kbd{c} by default, and you can call it separately with
+bound to @kbd{c} by default, and you can call it separately with
 @kbd{M-x@tie{}guix-command}.  It is a popup interface for
 @code{guix@tie{}@dots{}}  shell commands.  It is probably not very
 useful, as it provides all the options and flags for all the shell
