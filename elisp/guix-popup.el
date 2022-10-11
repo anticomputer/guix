@@ -154,7 +154,8 @@ This function is used by command `guix-package-popup'."
   "Show popup buffer for service commands."
   'guix-service-popup
   :actions '("Show services"
-             (?a "all" guix-all-services)
+             (?a "all system services" guix-all-services)
+             (?h "all Home services" guix-all-home-services)
              (?d "default" guix-default-services)
              (?n "by name" guix-services-by-name)
              (?r "by regexp" guix-services-by-regexp)

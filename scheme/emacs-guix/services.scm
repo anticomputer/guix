@@ -1,6 +1,7 @@
 ;;; services.scm --- Guix services
 
 ;; Copyright © 2017–2018 Alex Kost <alezost@gmail.com>
+;; Copyright © 2022 Ludovic Courtès <ludo@gnu.org>
 
 ;; This file is part of Emacs-Guix.
 
@@ -40,6 +41,7 @@
   #:use-module (emacs-guix utils)
   #:autoload   (gnu system) (operating-system-services)
   #:autoload   (guix scripts system) (read-operating-system)
+  #:autoload   (gnu home services) (fold-home-service-types)
   #:export (service-names
             service-names*
             service-sexps
@@ -99,11 +101,12 @@ SERVICE can be either a service object, or a service type itself."
 
 (define-values (service-by-id
                 register-service)
-  (let ((table (delay (fold-service-types
-                       (lambda (service table)
-                         (vhash-consq (service-id service)
-                                      service table))
-                       vlist-null))))
+  (let* ((accumulate (lambda (service table)
+                       (vhash-consq (service-id service)
+                                    service table)))
+         (table (delay (fold-service-types accumulate
+                                           (fold-home-service-types
+                                            accumulate vlist-null)))))
     (values
      (lambda (id)
        "Return service by ID (its 'object-address') or #f."
@@ -210,6 +213,8 @@ MATCH-PARAMS is a list of parameters that REGEXP can match."
      (services-by-location-file (car search-values)))
     ((all)
      (fold-service-types cons '()))
+    ((all-home)
+     (fold-home-service-types cons '()))
     ((from-expression)
      (register/return-services (read-eval (car search-values))))
     ((from-os-file)

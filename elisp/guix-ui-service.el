@@ -79,8 +79,10 @@ SEARCH-TYPE may be one of the following symbols: `id', `all',
                       (car search-values))
            (message "%d services placed in '%s'."
                     count (car search-values))))
+	(all-home
+         (message "%d available Home services." count))
         (all
-         (message "%d available services." count))))))
+         (message "%d available system services." count))))))
 
 
 ;;; Service 'info'
@@ -261,9 +263,15 @@ Interactively, prompt for FILE (see also `guix-support-dired')."
 
 ;;;###autoload
 (defun guix-all-services ()
-  "Display all available Guix services."
+  "Display all available Guix System services."
   (interactive)
   (guix-service-get-display 'all))
+
+;;;###autoload
+(defun guix-all-home-services ()
+  "Display all available Guix Home services."
+  (interactive)
+  (guix-service-get-display 'all-home))
 
 ;;;###autoload
 (defun guix-default-services (var-name)
