@@ -26,6 +26,14 @@
   #:export (compressor-names
             pack-format-names))
 
+;; Guix commit ebe9d660a55629f2506db124b0e016885fc61e5c (Sep. 2022) moved
+;; '%compressors' & co. from (guix scripts pack) to (gnu compression).
+;; Adjust accordingly.
+(eval-when (expand load eval)
+  (let ((compression (resolve-module '(gnu compression) #:ensure #f)))
+    (when compression
+      (module-use! (current-module) (module-public-interface compression)))))
+
 (define (compressor-names)
   "Return a list of names of available pack compressors."
   (map compressor-name %compressors))
