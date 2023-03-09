@@ -77,7 +77,7 @@ shouldn't end with a trailing slash.")
                  (or "activate" "activate-service" "boot" "parameters"
                      "shepherd.conf"
                      (and "shepherd" (regexp ,chars-rx) ".scm")
-                     (and (regexp ,chars-rx) "-guile-builder"))
+                     (and (regexp ,chars-rx) "-builder"))
                  string-end)
            t)
          . guix-scheme-mode))
