@@ -1,7 +1,7 @@
 ;;; guix-misc.el --- Miscellaneous definitions  -*- lexical-binding: t -*-
 
 ;; Copyright © 2014–2018 Alex Kost <alezost@gmail.com>
-;; Copyright © 2018, 2020 Jan (janneke) Nieuwenhuizen <janneke@gnu.org>
+;; Copyright © 2018, 2020, 2023 Janneke Nieuwenhuizen <janneke@gnu.org>
 
 ;; This file is part of Emacs-Guix.
 
@@ -244,7 +244,9 @@ If PROFILE is nil, use `guix-current-profile'."
                        path)))
         (setenv variable value)
         (when (equal variable "PATH")
-          (setq exec-path (split-string value ":")))))))
+          (setq exec-path (split-string value ":")))
+        (when (equal variable "INFOPATH")
+          (setq Info-directory-list (split-string value ":")))))))
 
 
 ;;; Executing guix commands
