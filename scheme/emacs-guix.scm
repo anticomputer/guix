@@ -41,6 +41,7 @@
                                     package/output-sexps
                                     number-of-packages
                                     package-names*
+                                    package-by-id
                                     package-location-string
                                     package-location-files
                                     package-location-sexps)
