@@ -1,4 +1,4 @@
-;;; guix.el --- Interface for GNU Guix
+;;; guix.el --- Interface for GNU Guix  -*- lexical-binding: t -*-
 
 ;; Copyright © 2016–2019 Alex Kost <alezost@gmail.com>
 

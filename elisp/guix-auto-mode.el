@@ -1,4 +1,4 @@
-;;; guix-auto-mode.el --- Settings for `auto-mode-alist'
+;;; guix-auto-mode.el --- Settings for `auto-mode-alist'  -*- lexical-binding: t -*-
 
 ;; Copyright © 2017 Alex Kost <alezost@gmail.com>
 ;; Copyright © 2018 Oleg Pykhalov <go.wigust@gmail.com>

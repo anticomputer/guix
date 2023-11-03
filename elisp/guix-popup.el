@@ -1,4 +1,4 @@
-;;; guix-popup.el --- Popup interface for Emacs-Guix commands
+;;; guix-popup.el --- Popup interface for Emacs-Guix commands  -*- lexical-binding: t -*-
 
 ;; Copyright © 2018–2019, 2021 Alex Kost <alezost@gmail.com>
 

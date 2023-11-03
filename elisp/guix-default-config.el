@@ -1,4 +1,4 @@
-;;; guix-default-config.el --- Default values for configuration variables
+;;; guix-default-config.el --- Default values for configuration variables  -*- lexical-binding: t -*-
 
 ;; Copyright © 2016 Alex Kost <alezost@gmail.com>
 

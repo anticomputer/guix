@@ -1,4 +1,4 @@
-;;; guix-config.el --- Configuration variables
+;;; guix-config.el --- Configuration variables  -*- lexical-binding: t -*-
 
 ;; Copyright © 2016–2017 Alex Kost <alezost@gmail.com>
 

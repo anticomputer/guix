@@ -1,4 +1,4 @@
-;;; guix-ui-messages.el --- Minibuffer messages for Guix package management interface
+;;; guix-ui-messages.el --- Minibuffer messages for Guix package management interface  -*- lexical-binding: t -*-
 
 ;; Copyright © 2014–2019 Alex Kost <alezost@gmail.com>
 
@@ -181,7 +181,7 @@
                (guix-message-string-entry-type
                 entry-type 'plural)))))
 
-(defun guix-message-packages-by-id (entries entry-type ids)
+(defun guix-message-packages-by-id (entries _entry-type ids)
   "Display a message for packages or outputs searched by IDS."
   (let ((count (length entries)))
     (if (= 0 count)

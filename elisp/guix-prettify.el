@@ -1,4 +1,4 @@
-;;; guix-prettify.el --- Prettify Guix store file names
+;;; guix-prettify.el --- Prettify Guix store file names  -*- lexical-binding: t -*-
 
 ;; Copyright © 2014, 2015, 2017, 2020 Alex Kost <alezost@gmail.com>
 

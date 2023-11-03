@@ -1,4 +1,4 @@
-;;; guix-derivation.el --- Guix derivation mode
+;;; guix-derivation.el --- Guix derivation mode  -*- lexical-binding: t -*-
 
 ;; Copyright © 2017 Oleg Pykhalov <go.wigust@gmail.com>
 ;; Copyright © 2017 Alex Kost <alezost@gmail.com>

@@ -1,4 +1,4 @@
-;;; guix-license.el --- Licenses
+;;; guix-license.el --- Licenses  -*- lexical-binding: t -*-
 
 ;; Copyright © 2016, 2018 Alex Kost <alezost@gmail.com>
 

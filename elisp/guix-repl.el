@@ -1,4 +1,4 @@
-;;; guix-repl.el --- Making and using Guix REPL
+;;; guix-repl.el --- Making and using Guix REPL  -*- lexical-binding: t -*-
 
 ;; Copyright © 2014–2019 Alex Kost <alezost@gmail.com>
 

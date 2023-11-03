@@ -1,4 +1,4 @@
-;;; guix-help-vars.el --- Variables related to Guix --help output
+;;; guix-help-vars.el --- Variables related to Guix --help output  -*- lexical-binding: t -*-
 
 ;; Copyright © 2015, 2017, 2018 Alex Kost <alezost@gmail.com>
 

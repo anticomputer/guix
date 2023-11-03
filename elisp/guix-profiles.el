@@ -1,4 +1,4 @@
-;;; guix-profiles.el --- Guix profiles
+;;; guix-profiles.el --- Guix profiles  -*- lexical-binding: t -*-
 
 ;; Copyright © 2014–2018 Alex Kost <alezost@gmail.com>
 ;; Copyright © 2015 Mathieu Lirzin <mthl@openmailbox.org>
