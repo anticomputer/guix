@@ -56,7 +56,10 @@ $(guile_install_go_files): install-nobase_dist_guilemoduleDATA
 GUILEC_ENV =					\
   GUILE_AUTO_COMPILE=0
 
+# Turn off cross-module inlining so that exported bindings that
+# (emacs-guix) relies on remain visible at run time.
 GUILEC_OPTS =					\
+  -O2 -Ono-cross-module-inlining		\
   -Warity-mismatch				\
   -Wformat					\
   -Wunbound-variable
