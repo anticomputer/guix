@@ -38,6 +38,7 @@
   #:use-module (guix derivations)
   #:use-module (guix ui)
   #:autoload   (guix scripts) (build-package)
+  #:autoload   (guix scripts build) (log-url)
   #:autoload   (guix scripts package) (build-and-use-profile
                                        delete-generations)
   #:use-module (emacs-guix utils)
