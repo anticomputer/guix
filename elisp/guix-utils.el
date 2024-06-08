@@ -69,16 +69,16 @@ This function is similar to `shell-quote-argument', but less strict."
       (rx (not (any alnum "-=,./\n"))) "\\\\\\&" argument))))
 
 (defun guix-command-symbol (&optional args)
-  "Return symbol by concatenating 'guix-command' and ARGS (strings)."
+  "Return symbol by concatenating \"guix-command\" and ARGS (strings)."
   (intern (guix-concat-strings (cons "guix-command" args) "-")))
 
 (defun guix-command-string (&optional args)
-  "Return 'guix ARGS ...' string with quoted shell arguments."
+  "Return \"guix ARGS ...\" string with quoted shell arguments."
   (let ((args (mapcar #'guix-shell-quote-argument args)))
     (guix-concat-strings (cons "guix" args) " ")))
 
 (defun guix-copy-command-as-kill (args &optional no-message?)
-  "Put 'guix ARGS ...' string into `kill-ring'.
+  "Put \"guix ARGS ...\" string into `kill-ring'.
 See also `guix-copy-as-kill'."
   (bui-copy-as-kill (guix-command-string args) no-message?))
 
@@ -89,7 +89,7 @@ In a simple case the result is:
 
   BASE-NAME: POSTFIX
 
-If BASE-NAME is wrapped by '*', then the result is:
+If BASE-NAME is wrapped by \"*\", then the result is:
 
   *BASE-NAME: POSTFIX*"
   (let ((re (rx string-start
@@ -159,7 +159,7 @@ message)."
             (message (if (stringp message)
                          message
                        (substitute-command-keys "\
-Press '\\[revert-buffer]' to update this buffer.")))))
+Press \\[revert-buffer] to update this buffer.")))))
       (funcall function))))
 
 (defun guix-display-buffer (buffer)
@@ -334,7 +334,7 @@ See `guix-support-dired' for details.  See also `guix-read-file-name'."
                          mustmatch initial predicate)))
 
 (defun guix-read-os-file-name ()
-  "Read file name with Guix System 'operating-system' declaration."
+  "Read file name with Guix System \"operating-system\" declaration."
   (guix-read-file-name-maybe "System configuration file: "))
 
 (defun guix-find-file (file)

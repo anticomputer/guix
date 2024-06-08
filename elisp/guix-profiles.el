@@ -57,7 +57,7 @@
   (expand-file-name "guix/current"
                     (or (getenv "XDG_CONFIG_HOME")
                         (expand-file-name "~/.config")))
-  "Profile populated by 'guix pull' command.")
+  "Profile populated by \"guix pull\" command.")
 
 (defvar guix-default-user-profile
   (or (file-symlink-p guix-user-profile)
@@ -71,7 +71,7 @@ also contain profile generations.")
   (or (file-symlink-p guix-pulled-profile)
       (expand-file-name "current-guix"
                         (guix-user-profiles-directory)))
-  "Default profile populated by 'guix pull' command.
+  "Default profile populated by \"guix pull\" command.
 Unlike `guix-pulled-profile', directory with this profile should
 also contain profile generations.")
 
@@ -96,7 +96,7 @@ It is used by various commands as the default working profile.")
   (rx-to-string `(or ,guix-pulled-profile
                      ,guix-default-pulled-profile)
                 t)
-  "Regexp matching 'guix pull'-ed profile.")
+  "Regexp matching \"guix pull\"-ed profile.")
 
 (defvar guix-generation-file-name-regexp
   (rx (group (one-or-more any))
@@ -118,7 +118,7 @@ The first parenthesized group should match profile file name.")
   (string-match-p guix-home-profile-regexp profile))
 
 (defun guix-pulled-profile? (profile)
-  "Return non-nil, if PROFILE is populated by 'guix pull'."
+  "Return non-nil, if PROFILE is populated by \"guix pull\"."
   (string-match-p guix-pulled-profile-regexp profile))
 
 (defun guix-assert-non-system-profile (profile)
@@ -161,9 +161,9 @@ same parent directory.
 If PROFILE matches `guix-system-profile-regexp' or
 `guix-home-profile-regexp', then it is considered to be a system
 or home profile.  Unlike usual profiles, for a system/home
-profile, packages are placed in 'profile' sub-directory, so the
+profile, packages are placed in \"profile\" sub-directory, so the
 returned file name does not contain this potential trailing
-'/profile'."
+\"/profile\"."
   (let* ((profile (guix-profile profile))
          (profile (if (and (or (guix-system-profile? profile)
 			       (guix-home-profile? profile))

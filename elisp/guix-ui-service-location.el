@@ -33,7 +33,7 @@
 (guix-define-groups service-location)
 
 (defun guix-service-location-get-entries ()
-  "Receive 'service location' entries."
+  "Receive \"service location\" entries."
   (guix-eval-read "(service-location-sexps)"))
 
 

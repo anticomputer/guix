@@ -48,7 +48,7 @@
   '((default :inherit guix-derivation-file-name)
     (((class color) (background light)) :foreground "SpringGreen4")
     (((class color) (background dark)) :foreground "SpringGreen3"))
-  "Face for '*.drv' store file names."
+  "Face for \"*.drv\" store file names."
   :group 'guix-derivation-faces)
 
 (defcustom guix-derivation-file-regexp

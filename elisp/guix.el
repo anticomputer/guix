@@ -61,12 +61,12 @@
     (((class color) (min-colors 8))
      :foreground "green")
     (t :underline t))
-  "Parent face for various true-kind things ('Yes' strings, etc.)."
+  "Parent face for various true-kind things (\"Yes\" strings, etc.)."
   :group 'guix-faces)
 
 (defface guix-false
   '((t :weight bold))
-  "Parent face for various false-kind things ('No' strings, etc.)."
+  "Parent face for various false-kind things (\"No\" strings, etc.)."
   :group 'guix-faces)
 
 (provide 'guix)

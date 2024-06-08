@@ -58,8 +58,8 @@
         (message "WARNING: Can't define `guix-scheme-directory'!")
         nil))
   "Directory with Scheme files for Emacs-Guix package.
-It should be a directory where Guile modules are placed, i.e. a
-directory with 'emacs-guix' sub-directory.")
+It should be a directory where Guile modules are placed,
+i.e., a directory with a \"emacs-guix\" sub-directory.")
 
 (defvar guix-image-directory
   (or guix-config-image-directory

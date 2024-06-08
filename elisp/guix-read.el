@@ -36,7 +36,7 @@
   "Whether a list of package names is allowed to have duplicates or not.
 
 These names are used as completions by several commands (for
-example, by '\\[guix-packages-by-name]').
+example, by \\[guix-packages-by-name]).
 
 In short: `t' is fast but you'll see unwanted duplicates of
 package names; `nil' is slow (only the first time) but there will

@@ -20,7 +20,7 @@
 ;;; Commentary:
 
 ;; This file provides an interface for displaying system generations
-;; in 'list' and 'info' buffers, and commands for working with them.
+;; in "list" and "info" buffers, and commands for working with them.
 
 ;;; Code:
 
@@ -39,10 +39,10 @@
   (rx-to-string `(and ,guix-store-directory "/"
                       (+ alnum) "-shepherd.conf")
                 t)
-  "Regexp matching 'shepherd.conf' file placed in the store.")
+  "Regexp matching \"shepherd.conf\" file placed in the store.")
 
 (defun guix-system-generation-add-kernel-config (entry)
-  "Return ENTRY with 'kernel-config' parameter."
+  "Return ENTRY with \"kernel-config\" parameter."
   (let* ((kernel (bui-entry-value entry 'kernel))
          (dir    (file-name-directory kernel))
          ;; Nowadays kernel config has ".config" name, but before
@@ -54,7 +54,7 @@
       ,@entry)))
 
 (defun guix-system-generation-add-shepherd-config (entry)
-  "Return ENTRY with 'shepherd-config' parameter."
+  "Return ENTRY with \"shepherd-config\" parameter."
   (let* ((file-name (bui-entry-value entry 'file-name))
          (boot-file (expand-file-name "boot" file-name)))
     (with-temp-buffer
@@ -68,7 +68,7 @@
 
 (defun guix-system-generation-get-entries (profile search-type
                                                    search-values params)
-  "Return 'system-generation' entries."
+  "Return \"system-generation\" entries."
   (let* ((add-kernel-config? (or (null params)
                                  (memq 'kernel-config params)))
          (add-shepherd-config? (or (null params)
@@ -129,7 +129,7 @@ SEARCH-VALUES."
 
 (defun guix-system-generation-info-get-entries (profile search-type
                                                         &rest search-values)
-  "Return 'system-generation' entries for displaying them in 'info' buffer."
+  "Return \"system-generation\" entries for displaying them in info buffer."
   (guix-system-generation-get-entries
    profile search-type search-values
    (cl-union guix-system-generation-info-required-params
@@ -165,7 +165,7 @@ SEARCH-VALUES."
 
 (defun guix-system-generation-list-get-entries (profile search-type
                                                         &rest search-values)
-  "Return 'system-generation' entries for displaying them in 'list' buffer."
+  "Return \"system-generation\" entries for displaying them in list buffer."
   (guix-system-generation-get-entries
    profile search-type search-values
    (cl-union guix-system-generation-list-required-params

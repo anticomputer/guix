@@ -39,7 +39,7 @@
   :message-function 'guix-lint-checker-message)
 
 (defun guix-lint-checker-get-entries (search-type &rest args)
-  "Receive 'lint-checker' entries.
+  "Receive \"lint-checker\" entries.
 SEARCH-TYPE may be one of the following symbols: `all', `local',
 `id', `name'."
   (guix-eval-read

@@ -43,7 +43,7 @@
             (number-of-generations . "Generations")))
 
 (defvar guix-profiles nil
-  "List of profiles displayed by '\\[guix-profiles]' command.
+  "List of profiles displayed by \\[guix-profiles] command.
 This variable is set automatically when it is needed (on the
 first use).
 
@@ -67,7 +67,7 @@ properly.")
                       (guix-eval-read "(user-profiles)")))))))
 
 (defun guix-profile->entry (profile)
-  "Return 'guix-profile' entry by PROFILE file-name."
+  "Return \"guix-profile\" entry by PROFILE file-name."
   (let* ((profile (guix-profile profile))
          (number-of-packages (guix-profile-number-of-packages
                               profile)))
@@ -81,7 +81,7 @@ properly.")
       (error "No packages in '%s'.  Is it a real profile?" profile))))
 
 (defun guix-profile-get-entries (&optional search-type &rest args)
-  "Return 'guix-profile' entries."
+  "Return \"guix-profile\" entries."
   (let ((profiles (cond
                    ((or (null search-type)
                         (eq search-type 'all))
@@ -172,7 +172,7 @@ If nothing is marked, return a list with profile at point."
   (guix-generations (guix-profile-list-current-profile)))
 
 (defun guix-profile-list-show-search-paths (&optional type)
-  "Display 'search paths' environment variables for the marked profiles.
+  "Display \"search paths\" environment variables for the marked profiles.
 If nothing is marked, use profile on the current line."
   (interactive (list (guix-read-search-paths-type)))
   (guix-show-search-paths (guix-profile-list-marked-profiles) type))
@@ -252,7 +252,7 @@ If nothing is marked, use profile on the current line."
   :group 'guix-profile-info-faces)
 
 (defun guix-profile-info-insert-search-paths-button (profile)
-  "Insert 'Search paths' button for PROFILE."
+  "Insert \"Search paths\" button for PROFILE."
   (bui-insert-action-button
    "Search paths"
    (lambda (btn)
@@ -263,7 +263,7 @@ If nothing is marked, use profile on the current line."
    'profile profile))
 
 (defun guix-profile-info-insert-apply-manifest-button (profile)
-  "Insert 'Apply manifest' button for PROFILE."
+  "Insert \"Apply manifest\" button for PROFILE."
   (bui-insert-action-button
    "Apply manifest"
    (lambda (btn)
@@ -333,7 +333,7 @@ If nothing is marked, use profile on the current line."
   (guix-generations profile))
 
 (defun guix-profile-info-show-search-paths (profile &optional type)
-  "Display 'search paths' environment variables for PROFILE."
+  "Display \"search paths\" environment variables for PROFILE."
   (interactive
    (list (guix-read-profile-from-entries)
          (guix-read-search-paths-type)))

@@ -38,7 +38,7 @@
   :message-function 'guix-service-message)
 
 (defun guix-service-get-entries (search-type search-values params)
-  "Receive 'service' entries.
+  "Receive \"service\" entries.
 SEARCH-TYPE may be one of the following symbols: `id', `all',
 `name', `regexp', `location', `from-os-file', `from-expression'."
   (guix-eval-read
@@ -110,7 +110,7 @@ SEARCH-TYPE may be one of the following symbols: `id', `all',
 
 (defface guix-service-info-heading
   '((t :inherit bui-info-heading))
-  "Face used for 'info' buffer heading (service name)."
+  "Face used for info buffer heading (service name)."
   :group 'guix-service-info-faces)
 
 (defface guix-service-info-description
@@ -125,7 +125,7 @@ SEARCH-TYPE may be one of the following symbols: `id', `all',
 
 (defvar guix-service-info-required-params
   '(id)
-  "List of the required 'service' parameters.
+  "List of the required \"service\" parameters.
 These parameters are received from the Scheme side
 along with the displayed parameters.
 
@@ -143,7 +143,7 @@ identifying an entry.")
              'add)))
 
 (defun guix-service-info-get-entries (search-type &rest search-values)
-  "Return 'service' entries for displaying them in 'info' buffer."
+  "Return \"service\" entries for displaying them in info buffer."
   (guix-service-get-entries
    search-type search-values
    (cl-union guix-service-info-required-params
@@ -195,7 +195,7 @@ identifying an entry.")
 
 (defvar guix-service-list-required-params
   '(id)
-  "List of the required 'service' parameters.
+  "List of the required \"service\" parameters.
 These parameters are received from the Scheme side
 along with the displayed parameters.
 
@@ -211,7 +211,7 @@ identifying an entry.")
    (bui-default-hint)))
 
 (defun guix-service-list-get-entries (search-type &rest search-values)
-  "Return 'service' entries for displaying them in 'list' buffer."
+  "Return \"service\" entries for displaying them in list buffer."
   (guix-service-get-entries
    search-type search-values
    (cl-union guix-service-list-required-params

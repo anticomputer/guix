@@ -47,7 +47,7 @@
 ;;; "About" buffer
 
 (defcustom guix-about-buffer-name "*Guix About*"
-  "Buffer name for '\\[guix-about]'."
+  "Buffer name for \\[guix-about]."
   :type 'string
   :group 'guix)
 
@@ -75,7 +75,7 @@
            ,(lambda (_button) (guix-version)))
 
     "\n")
-  "Text to show with '\\[guix-about]' command.
+  "Text to show with \\[guix-about] command.
 This is not really a text, it is a list of arguments passed to
 `fancy-splash-insert'.")
 
@@ -107,14 +107,14 @@ Return nil if the image cannot be found."
             (bui-newline)))))))
 
 (defun guix-about-insert-content ()
-  "Insert Emacs-Guix 'about' info into the current buffer."
+  "Insert information about Emacs-Guix into the current buffer."
   (guix-insert-logo)
   (apply #'fancy-splash-insert guix-about-specifications)
   (goto-char (point-min))
   (forward-line 3))
 
 (defun guix-about-show ()
-  "Display 'About' buffer with fancy Guix logo if available.
+  "Display a buffer with a fancy Guix logo if available.
 Unlike `guix-about', this command always recreates
 `guix-about-buffer-name' buffer."
   (interactive)
@@ -123,7 +123,7 @@ Unlike `guix-about', this command always recreates
 
 ;;;###autoload
 (defun guix-about ()
-  "Display 'About' buffer with fancy Guix logo if available.
+  "Display a buffer with a fancy Guix logo if available.
 Switch to `guix-about-buffer-name' buffer if it already exists."
   (interactive)
   (guix-switch-to-buffer-or-funcall

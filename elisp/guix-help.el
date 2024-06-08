@@ -39,16 +39,16 @@ If ARG is non-nil (interactively with prefix), show Guix info manual."
 ;;; "Help" buffer
 
 (guix-define-groups help
-  :group-doc "Settings for '\\[guix-help]'."
-  :faces-group-doc "Faces for '\\[guix-help]'.")
+  :group-doc "Settings for \\[guix-help]."
+  :faces-group-doc "Faces for \\[guix-help].")
 
 (defcustom guix-help-buffer-name "*Guix Help*"
-  "Buffer name for '\\[guix-help]'."
+  "Buffer name for \\[guix-help]."
   :type 'string
   :group 'guix-help)
 
 (defcustom guix-help-doc-column 40
-  "Column at which 'doc' button is inserted."
+  "Column at which \"doc\" button is inserted."
   :type 'integer
   :group 'guix-help)
 
@@ -172,7 +172,7 @@ If ARG is non-nil (interactively with prefix), show Guix info manual."
     (guix-about t nil)
     (guix-version t nil)
     (guix-report-bug t nil))
-  "List of command specifications for '\\[guix-help]'.
+  "List of command specifications for \\[guix-help].
 Each specification can have one of the following forms:
 
   TITLE
@@ -186,7 +186,7 @@ COMMAND-NAME is a symbol.
 COMMAND-BUTTON? is a boolean value; it defines whether
 COMMAND-NAME is buttonized or not.
 
-INFO-BUTTON? is a boolean value; it defines whether 'info' button
+INFO-BUTTON? is a boolean value; it defines whether \"info\" button
 should be displayed or not.")
 
 (defvar guix-help-mode-map
@@ -196,7 +196,7 @@ should be displayed or not.")
   "Keymap for Emacs-Guix Help and About buffers.")
 
 (define-derived-mode guix-help-mode special-mode "Help"
-  "Major mode for '\\[guix-about]' and '\\[guix-help]' buffers.
+  "Major mode for \\[guix-about] and \\[guix-help] buffers.
 
 \\{help-mode-map}")
 
@@ -229,7 +229,7 @@ INFO-NODE is the name passed to `info' function."
    'symbol symbol))
 
 (defun guix-insert-command-button (command)
-  "Insert button to run 'M-x COMMAND'."
+  "Insert button to run \"M-x COMMAND\"."
   (let ((command-string (symbol-name command)))
     (bui-insert-button
      command-string 'button
@@ -255,8 +255,8 @@ INFO-NODE is the name passed to `info' function."
   (guix-goto-index-topic "Command Index" topic))
 
 (defun guix-help-insert-doc-buttons (command &optional info-button?)
-  "Insert 'doc' button for COMMAND at `guix-help-doc-column'.
-If INFO-BUTTON? is non-nil, insert 'info' button as well."
+  "Insert \"doc\" button for COMMAND at `guix-help-doc-column'.
+If INFO-BUTTON? is non-nil, insert \"info\" button as well."
   (indent-to guix-help-doc-column 2)
   (guix-insert-doc-button "doc" command)
   (when info-button?
@@ -425,8 +425,8 @@ Guix buffers are defined using `guix-define-buffer-function'."
 ;;;###autoload
 (defun guix-extended-command (command)
   "Run Emacs-Guix COMMAND.
-This is like '\\[execute-extended-command]' but only global Guix
-commands are completed (commands displayed with '\\[guix-help]')."
+This is like \\[execute-extended-command] but only global Guix
+commands are completed (commands displayed with \\[guix-help])."
   (interactive
    (list (completing-read (guix-extended-command-prompt)
                           (guix-extended-commands)

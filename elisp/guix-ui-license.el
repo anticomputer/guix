@@ -38,7 +38,7 @@
   :titles '((url . "URL")))
 
 (defun guix-license-get-entries (search-type &rest args)
-  "Receive 'license' entries.
+  "Receive \"license\" entries.
 SEARCH-TYPE may be one of the following symbols: `all', `id', `name'."
   (guix-eval-read
    (apply #'guix-make-guile-expression
@@ -87,7 +87,7 @@ SEARCH-TYPE may be one of the following symbols: `all', `id', `name'."
   (bui-newline))
 
 (defun guix-license-insert-comment (entry)
-  "Insert 'comment' of a license ENTRY."
+  "Insert \"comment\" of a license ENTRY."
   (let ((comment (bui-entry-value entry 'comment)))
     (if (and comment
              (string-match-p "^http" comment))

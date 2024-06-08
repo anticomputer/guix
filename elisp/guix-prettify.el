@@ -166,7 +166,7 @@ file names (see `guix-prettify-regexp') are displayed as
 
 This mode can be enabled programmatically using hooks:
 
-  (add-hook 'shell-mode-hook 'guix-prettify-mode)
+  (add-hook \\='shell-mode-hook \\'guix-prettify-mode)
 
 It is possible to enable the mode in any buffer, however not any
 buffer's highlighting may survive after adding new elements to

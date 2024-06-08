@@ -19,8 +19,8 @@
 
 ;;; Commentary:
 
-;; This file provides an interface to display store items in 'list' and
-;; 'info' buffers.
+;; This file provides an interface to display store items in "list" and
+;; "info" buffers.
 
 ;;; Code:
 
@@ -62,7 +62,7 @@ after the hash part).")
 
 (defun guix-store-file-name< (a b)
   "Return non-nil if store file name A is less than B.
-This is similar to `string<', except the '/gnu/store/...-' parts
+This is similar to `string<', except the \"/gnu/store/...-\" parts
 of the file names are ignored."
   (cl-flet ((name (str)
               (and (string-match guix-store-file-name-regexp str)
@@ -95,7 +95,7 @@ of the file names are ignored."
 
 (defun guix-store-item-get-entries (search-type
                                     &optional search-values params)
-  "Receive 'store-item' entries.
+  "Receive \"store-item\" entries.
 SEARCH-TYPE may be one of the following symbols: `id', `live',
 `dead', `referrers', `references', `derivers', `requisites',
 `failures'."
@@ -124,7 +124,7 @@ SEARCH-TYPE may be one of the following symbols: `id', `live',
         ((id path)
          (cl-case count
            (0 (message "No info on the store item(s) found."))
-           (1 (msg "Store item '%s'." val))
+           (1 (msg "Store item `%s'." val))
            (t (msg "%d store items displayed." count))))
         (live (msg "%d live store items." count))
         (dead (msg "%d dead store items." count))
@@ -137,13 +137,13 @@ SEARCH-TYPE may be one of the following symbols: `id', `live',
          (let ((type (symbol-name search-type))
                (paths (string-join search-values ", ")))
            (cl-case count
-             (0 (message "No %s of '%s' found." type paths))
-             (1 (msg "A single %s of '%s'."
+             (0 (message "No %s of `%s' found." type paths))
+             (1 (msg "A single %s of `%s'."
                      ;; Remove the trailing "s" from the search type
                      ;; ("derivers" -> "deriver").
                      (substring type 0 (1- (length type)))
                      paths))
-             (t (msg "%d %s of '%s'." count type paths)))))))))
+             (t (msg "%d %s of `%s'." count type paths)))))))))
 
 (defun guix-store-item-delete (&rest file-names)
   "Delete FILE-NAMES from the store."
@@ -191,7 +191,7 @@ SEARCH-TYPE may be one of the following symbols: `id', `live',
 
 (defvar guix-store-item-info-required-params
   '(id)
-  "List of the required 'store-item' parameters.
+  "List of the required `store-item' parameters.
 These parameters are received from the Scheme side
 along with the displayed parameters.
 
@@ -199,7 +199,7 @@ Do not remove `id' from this info as it is required for
 identifying an entry.")
 
 (defun guix-store-item-info-get-entries (search-type &rest search-values)
-  "Return 'store-item' entries for displaying them in 'info' buffer."
+  "Return \"store-item\" entries for displaying them in info buffer."
   (guix-store-item-get-entries
    search-type search-values
    (cl-union guix-store-item-info-required-params
@@ -227,7 +227,7 @@ identifying an entry.")
        (lambda (btn)
          (guix-package-size (button-get btn 'file-name)
                             (guix-read-package-size-type)))
-       (format "Show full size info on '%s'" file-name)
+       (format "Show full size info on `%s'" file-name)
        'file-name file-name))))
 
 (defun guix-info-insert-store-item (file-name)
@@ -270,7 +270,7 @@ TYPE should be one of the following symbols: `derivers',
      (lambda (btn)
        (guix-store-item-get-display (button-get btn 'search-type)
                                     (button-get btn 'file-name)))
-     (format "Show %s of '%s'" type-str file-name)
+     (format "Show %s of `%s'" type-str file-name)
      'search-type type
      'file-name file-name)))
 
@@ -320,7 +320,7 @@ See `guix-store-item-info-insert-type-button' for the meaning of TYPE."
 
 (defvar guix-store-item-list-required-params
   '(id)
-  "List of the required 'store-item' parameters.
+  "List of the required `store-item' parameters.
 These parameters are received from the Scheme side
 along with the displayed parameters.
 
@@ -343,7 +343,7 @@ identifying an entry.")
    (bui-default-hint)))
 
 (defun guix-store-item-list-get-entries (search-type &rest search-values)
-  "Return 'store-item' entries for displaying them in 'list' buffer."
+  "Return `store-item' entries for displaying them in `list' buffer."
   (guix-store-item-get-entries
    search-type search-values
    (cl-union guix-store-item-list-required-params
@@ -382,7 +382,7 @@ With ARG, mark all store-items for deletion."
     (bui-list--mark 'delete t)))
 
 (defun guix-store-item-list-execute ()
-  "Delete store items marked with '\\[guix-store-item-list-mark-delete]'."
+  "Delete store items marked with \\[guix-store-item-list-mark-delete]."
   (interactive)
   (let ((marked (bui-list-get-marked-id-list 'delete)))
     (or marked
@@ -396,7 +396,7 @@ Store items can be marked with any mark."
   (let* ((marked (bui-list-marked-or-current))
          (count (length marked))
          (msg (if (= 1 count)
-                  (format "Size of '%s': %%s." (car marked))
+                  (format "Size of `%s': %%s." (car marked))
                 (format "Size of %d marked items: %%s." count)))
          (size (guix-file-size-string
                 (guix-store-item-entries-size
@@ -435,7 +435,7 @@ Interactively, prompt for a single file name."
 ;;;###autoload
 (defun guix-store-item-referrers (&rest file-names)
   "Display referrers of the FILE-NAMES store item.
-This is analogous to 'guix gc --referrers FILE-NAMES' shell
+This is analogous to \"guix gc --referrers FILE-NAMES\" shell
 command.  See Info node `(guix) Invoking guix gc'."
   (interactive (list (guix-store-file-name-read)))
   (apply #'guix-assert-files-exist file-names)
@@ -444,7 +444,7 @@ command.  See Info node `(guix) Invoking guix gc'."
 ;;;###autoload
 (defun guix-store-item-references (&rest file-names)
   "Display references of the FILE-NAMES store item.
-This is analogous to 'guix gc --references FILE-NAMES' shell
+This is analogous to \"guix gc --references FILE-NAMES\" shell
 command.  See Info node `(guix) Invoking guix gc'."
   (interactive (list (guix-store-file-name-read)))
   (apply #'guix-assert-files-exist file-names)
@@ -453,7 +453,7 @@ command.  See Info node `(guix) Invoking guix gc'."
 ;;;###autoload
 (defun guix-store-item-requisites (&rest file-names)
   "Display requisites of the FILE-NAMES store item.
-This is analogous to 'guix gc --requisites FILE-NAMES' shell
+This is analogous to \"guix gc --requisites FILE-NAMES\" shell
 command.  See Info node `(guix) Invoking guix gc'."
   (interactive (list (guix-store-file-name-read)))
   (apply #'guix-assert-files-exist file-names)
@@ -462,7 +462,7 @@ command.  See Info node `(guix) Invoking guix gc'."
 ;;;###autoload
 (defun guix-store-item-derivers (&rest file-names)
   "Display derivers of the FILE-NAMES store item.
-This is analogous to 'guix gc --derivers FILE-NAMES' shell
+This is analogous to \"guix gc --derivers FILE-NAMES\" shell
 command.  See Info node `(guix) Invoking guix gc'."
   (interactive (list (guix-store-file-name-read)))
   (apply #'guix-assert-files-exist file-names)
@@ -471,7 +471,7 @@ command.  See Info node `(guix) Invoking guix gc'."
 ;;;###autoload
 (defun guix-store-failures ()
   "Display store items corresponding to cached build failures.
-This is analogous to 'guix gc --list-failures' shell command.
+This is analogous to \"guix gc --list-failures\" shell command.
 See Info node `(guix) Invoking guix gc'."
   (interactive)
   (guix-store-item-get-display 'failures))
@@ -479,7 +479,7 @@ See Info node `(guix) Invoking guix gc'."
 ;;;###autoload
 (defun guix-store-live-items ()
   "Display live store items.
-This is analogous to 'guix gc --list-live' shell command.
+This is analogous to \"guix gc --list-live\" shell command.
 See Info node `(guix) Invoking guix gc'."
   (interactive)
   (guix-store-item-get-display 'live))
@@ -487,7 +487,7 @@ See Info node `(guix) Invoking guix gc'."
 ;;;###autoload
 (defun guix-store-dead-items ()
   "Display dead store items.
-This is analogous to 'guix gc --list-dead' shell command.
+This is analogous to \"guix gc --list-dead\" shell command.
 See Info node `(guix) Invoking guix gc'."
   (interactive)
   (guix-store-item-get-display 'dead))

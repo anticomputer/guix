@@ -93,12 +93,12 @@
 
 (defface guix-build-log-phase-success
   '((t))
-  "Face for the 'succeeded' word of a phase line."
+  "Face for the \"succeeded\" word of a phase line."
   :group 'guix-build-log-faces)
 
 (defface guix-build-log-phase-fail
   '((t :inherit error))
-  "Face for the 'failed' word of a phase line."
+  "Face for the \"failed\" word of a phase line."
   :group 'guix-build-log-faces)
 
 (defface guix-build-log-phase-seconds
@@ -116,7 +116,7 @@
 
 (defvar guix-build-log-phase-start-regexp
   (concat "^starting phase " guix-build-log-phase-name-regexp)
-  "Regexp for the start line of a 'build' phase.")
+  "Regexp for the start line of a build phase.")
 
 (defvar guix-build-log-imenu-generic-expression
   `((nil ,guix-build-log-phase-start-regexp 1))
@@ -137,7 +137,7 @@ state)."
      t)))
 
 (defun guix-build-log-phase-end-regexp (&optional state)
-  "Return regexp for the end line of a 'build' phase.
+  "Return regexp for the end line of a build phase.
 STATE is a symbol denoting how a build phase was ended.  It should be
 `fail', `success' or `nil' (for a regexp matching any state)."
   (let ((state-rx (cond ((eq state 'success) "succeeded")
@@ -153,7 +153,7 @@ STATE is a symbol denoting how a build phase was ended.  It should be
   ;; For efficiency, it is better to have a regexp for the general line
   ;; of the phase end, then to call the function all the time.
   (guix-build-log-phase-end-regexp)
-  "Regexp for the end line of a 'build' phase.")
+  "Regexp for the end line of a build phase.")
 
 (defvar guix-build-log-font-lock-keywords
   `((,(guix-build-log-title-regexp 'start)
@@ -192,9 +192,9 @@ STATE is a symbol denoting how a build phase was ended.  It should be
     (define-key map (kbd "<backtab>") 'guix-build-log-phase-toggle-all)
     (define-key map [(shift tab)] 'guix-build-log-phase-toggle-all)
     map)
-  "Parent keymap for 'build-log' buffers.
+  "Parent keymap for `build-log' buffers.
 For `guix-build-log-mode' this map is used as is.
-For `guix-build-log-minor-mode' this map is prefixed with 'C-c'.")
+For `guix-build-log-minor-mode' this map is prefixed with \\`C-c'.")
 
 (defvar guix-build-log-mode-map
   (let ((map (make-sparse-keymap)))
@@ -214,7 +214,7 @@ For `guix-build-log-minor-mode' this map is prefixed with 'C-c'.")
 
 (defun guix-build-log-phase-start (&optional with-header?)
   "Return the start point of the current build phase.
-If WITH-HEADER? is non-nil, do not skip 'starting phase ...' header.
+If WITH-HEADER? is non-nil, do not skip \"starting phase ...\" header.
 Return nil, if there is no phase start before the current point."
   (save-excursion
     (end-of-line)
@@ -343,7 +343,7 @@ When Guix Build Log minor mode is enabled, it highlights build
 log in the current buffer.  This mode can be enabled
 programmatically using hooks, like this:
 
-  (add-hook 'shell-mode-hook 'guix-build-log-minor-mode)
+  (add-hook \\='shell-mode-hook \\='guix-build-log-minor-mode)
 
 \\{guix-build-log-minor-mode-map}"
   :init-value nil
