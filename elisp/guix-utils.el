@@ -26,6 +26,8 @@
 (require 'cl-lib)
 (require 'dash)
 (require 'bui-utils)
+(eval-when-compile (require 'subr-x))
+
 (require 'guix nil t)
 
 (defun guix-assert-build-farm ()
@@ -40,7 +42,7 @@ If LOCATION is a symbol `head', add another SEPARATOR to the
 beginning of the returned string; if `tail' - add SEPARATOR to
 the end of the string; if nil, do not add SEPARATOR; otherwise
 add both to the end and to the beginning."
-  (let ((str (mapconcat #'identity strings separator)))
+  (let ((str (string-join strings separator)))
     (cond ((null location)
            str)
           ((eq location 'head)

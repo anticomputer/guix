@@ -26,6 +26,8 @@
 ;;; Code:
 
 (require 'cl-lib)
+(eval-when-compile (require 'subr-x))
+
 (require 'guix nil t)
 (require 'guix-repl)
 (require 'guix-guile)
@@ -217,7 +219,7 @@ FILE.  With a prefix argument, also prompt for PROFILE."
                     profiles
                     " ")
          "\n\n"
-         (mapconcat #'identity paths "\n")
+         (string-join paths "\n")
          "\n"))
       (sh-mode))
     (guix-display-buffer guix-search-paths-buffer-name)))

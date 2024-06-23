@@ -28,6 +28,8 @@
 (require 'ffap)
 (require 'dash)
 (require 'bui)
+(eval-when-compile (require 'subr-x))
+
 (require 'guix-package)
 (require 'guix-guile)
 (require 'guix-repl)
@@ -133,7 +135,7 @@ SEARCH-TYPE may be one of the following symbols: `id', `live',
            (t (msg "%d failures found." count))))
         (t
          (let ((type (symbol-name search-type))
-               (paths (mapconcat #'identity search-values ", ")))
+               (paths (string-join search-values ", ")))
            (cl-case count
              (0 (message "No %s of '%s' found." type paths))
              (1 (msg "A single %s of '%s'."
