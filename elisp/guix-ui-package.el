@@ -397,7 +397,7 @@ a newer version (probably it's time to update)."
      :foreground "blue"))
   "Face used for packages from the future.
 \"From the future\" means there is a Guix package with this name
-but with an older version, i.e. the installed package is newer
+but with an older version, i.e., the installed package is newer
 than available from Guix!  This is rather unusual, it may happen,
 for example, if you installed a package after \"guix pull\" (see
 Info node `(guix) Invoking guix pull') and then you removed the
@@ -635,14 +635,14 @@ or (id spec) list."
   "Insert a message about unknown package at point."
   (insert "This package is ")
   (bui-format-insert "unknown" 'guix-package-info-unknown)
-  (insert ", i.e. there are no packages with\n"
+  (insert ", i.e., there are no packages with\n"
           "'" name "' name among the available package recipes."))
 
 (defun guix-package-info-insert-obsolete-text (name)
   "Insert a message about obsolete package NAME at point."
   (insert "This package is ")
   (bui-format-insert "obsolete" 'guix-package-info-obsolete)
-  (insert ", i.e. a newer version of\n")
+  (insert ", i.e., a newer version of\n")
   (bui-insert-button name 'guix-package-name)
   (insert " package is available."))
 
@@ -650,7 +650,7 @@ or (id spec) list."
   "Insert a message about package NAME with a future VERSION at point."
   (insert "This package is ")
   (bui-format-insert "from the future" 'guix-package-info-future)
-  (insert ", i.e. this (installed) package
+  (insert ", i.e., this (installed) package
 is newer than the available package recipe for ")
   (bui-insert-button name 'guix-package-name)
   (insert "."))

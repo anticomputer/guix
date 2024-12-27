@@ -76,7 +76,7 @@ If NO-DISPLAY is non-nil, do not switch to the REPL buffer."
 
 (defun guix-geiser-eval-in-repl-synchronously (str &optional repl
                                                    no-history no-display)
-  "Evaluate STR in Geiser REPL synchronously, i.e. wait until the
+  "Evaluate STR in Geiser REPL synchronously, i.e., wait until the
 REPL operation will be finished.
 See `guix-geiser-eval-in-repl' for the meaning of arguments."
   (let* ((repl (if repl (get-buffer repl) (guix-geiser-repl)))
