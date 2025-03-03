@@ -171,8 +171,36 @@ SEARCH-VALUES."
    (cl-union guix-system-generation-list-required-params
              (bui-list-displayed-params 'guix-system-generation))))
 
+(defun guix-system-configuration-file (profile &optional generation)
+  "Return the configuration file name of PROFILE."
+  (expand-file-name "../configuration.scm"
+                    (guix-package-profile profile generation)))
+
+(defun guix-system-generation-configuration-file (generation)
+  "Return the file name of a GENERATION's configuration.
+GENERATION is a generation number of the current profile."
+  (guix-system-configuration-file (guix-ui-current-profile) generation))
+
+(defun guix-system-generation-list-diff-configurations-with (diff-fn)
+  "Run a diff function on the configurations of the 2 marked generations."
+  (if (equal major-mode 'guix-system-generation-list-mode)
+      (guix-generation-list-compare
+       diff-fn
+       #'guix-system-generation-configuration-file)
+    (message "Not a system generations list buffer")))
+
 
 ;;; Interactive commands
+
+(defun guix-system-generation-list-diff-configurations ()
+  "Run Diff on the configurations of the 2 marked generations."
+  (interactive)
+  (guix-system-generation-list-diff-configurations-with #'guix-diff))
+
+(defun guix-system-generation-list-ediff-configurations ()
+  "Run Ediff on the configurations of the 2 marked generations."
+  (interactive)
+  (guix-system-generation-list-diff-configurations-with #'ediff-files))
 
 ;;;###autoload
 (defun guix-system-generations ()
