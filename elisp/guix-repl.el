@@ -293,6 +293,12 @@ display messages."
         ;; Wait until switching to (emacs-guix) module finishes.
         (guix-geiser-eval-in-repl-synchronously
          ",m (emacs-guix)" repl t t)
+        (guix-geiser-eval-in-repl-synchronously
+         (format "(set-package-module-path %S)"
+                 (if guix-repl-use-latest
+                     guix-pulled-profile
+                   (append guix-system-profile "/profile")))
+         repl t t)
         (and end-msg (message end-msg))
         (unless internal
           (run-hooks 'guix-repl-after-start-hook))))))
