@@ -27,6 +27,10 @@
 (define-module (emacs-guix profiles)
   #:use-module (ice-9 match)
   #:use-module (srfi srfi-1)
+  #:use-module (srfi srfi-71)
+  #:use-module ((gnu packages)
+                #:select (%package-module-path))
+  #:use-module (guix memoization)
   #:use-module (guix profiles)
   #:use-module (guix search-paths)
   #:use-module ((guix scripts package)
@@ -39,7 +43,8 @@
             manifest-entry-dependencies-file-names
             search-paths-specifications
             search-paths
-            user-profiles))
+            user-profiles
+            set-package-module-path))
 
 
 ;;; Manifest entries
@@ -153,5 +158,33 @@ Each specification is (VARIABLE SEPARATOR PATH) list."
                           (user-owned? root))
                       (generation-profile root)))
                (gc-roots))))
+
+
+;;; Package module paths
+(define guix-channel-entries
+  (mlambda (profile)
+    "Return manifest entries corresponding to extra channels--i.e., not the
+'guix' channel."
+    (remove (lambda (entry)
+              (or (string=? (manifest-entry-name entry) "guix")
+
+                  ;; If ENTRY lacks the 'source' property, it's not an entry
+                  ;; from 'guix pull'.  See <https://bugs.gnu.org/48778>.
+                  (not (assq 'source (manifest-entry-properties entry)))))
+            (manifest-entries (profile-manifest profile)))))
+
+(define (set-package-module-path profile)
+  ;; Search path for package modules.  Each item must be either a directory
+  ;; name or a pair whose car is a directory and whose cdr is a sub-directory
+  ;; to narrow the search.
+  (let ((channels-scm
+         (map (lambda (entry)
+                (string-append (manifest-entry-item entry)
+                                     "/share/guile/site/"
+                                     (effective-version)))
+              (guix-channel-entries profile))))
+
+    (%package-module-path
+     (append (%package-module-path) channels-scm))))
 
 ;;; profiles.scm ends here

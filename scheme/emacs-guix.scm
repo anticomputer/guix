@@ -73,6 +73,7 @@
                                 pack-format-names)
   #:autoload (emacs-guix profiles) (search-paths
                                     search-paths-specifications
+                                    set-package-module-path
                                     user-profiles)
   #:autoload (emacs-guix refresh) (refresh-updater-names)
   #:autoload (emacs-guix emacs) (%max-returned-list-size
