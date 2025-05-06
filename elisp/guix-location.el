@@ -63,13 +63,11 @@ If FILE is relative, it is considered to be relative to
 DIRECTORY (if it is specified and exists)."
   (cl-multiple-value-bind (file line column)
       (split-string location ":")
-    (let* ((file-name (expand-file-name file (or directory
-                                                 (guix-directory))))
-           (file-name (if (file-exists-p file-name)
-                          file-name
-                        (guix-eval-read
-                         (guix-make-guile-expression
-                          'search-load-path file)))))
+    (let ((file-name (if (file-name-absolute-p file)
+                         file
+                       (guix-eval-read
+                        (guix-make-guile-expression
+                         'search-load-path file)))))
       (unless file-name         ; not found in Guile %load-path
         (error "Location file not found: %s" file))
       (find-file file-name))
