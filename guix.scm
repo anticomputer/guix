@@ -76,16 +76,12 @@ newspace."
        (append (package-arguments emacs-guix)
                '(#:phases
                  (modify-phases %standard-phases
+                   (add-after 'unpack 'expand-load-path
+                     (lambda _
+                       ((assoc-ref emacs:%standard-phases 'expand-load-path)
+                        #:prepend-source? #f)))
                    (add-after 'unpack 'autogen
-                     (lambda _ (zero? (system* "sh" "autogen.sh"))))))))
-      (native-inputs
-       `(("pkg-config" ,pkg-config)
-         ;; 'emacs-minimal' does not find Emacs packages (this is for
-         ;; "guix environment").
-         ("emacs" ,emacs-no-x)
-         ("autoconf" ,autoconf)
-         ("automake" ,automake)
-         ("texinfo" ,texinfo))))))
+                     (lambda _ (zero? (system* "sh" "autogen.sh")))))))))))
 
 emacs-guix-devel
 
