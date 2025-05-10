@@ -1,6 +1,6 @@
 ;;; guix-misc.el --- Miscellaneous definitions  -*- lexical-binding: t -*-
 
-;; Copyright © 2014–2018 Alex Kost <alezost@gmail.com>
+;; Copyright © 2014-2018 Alex Kost <alezost@gmail.com>
 ;; Copyright © 2018, 2020, 2023 Janneke Nieuwenhuizen <janneke@gnu.org>
 
 ;; This file is part of Emacs-Guix.

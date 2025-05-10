@@ -1,6 +1,6 @@
 ;;; guix-ui-profile.el --- Interface for displaying profiles  -*- lexical-binding: t -*-
 
-;; Copyright © 2016–2019 Alex Kost <alezost@gmail.com>
+;; Copyright © 2016-2019 Alex Kost <alezost@gmail.com>
 
 ;; This file is part of Emacs-Guix.
 

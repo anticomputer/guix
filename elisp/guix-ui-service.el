@@ -1,6 +1,6 @@
 ;;; guix-ui-service.el --- Interface for displaying services  -*- lexical-binding: t -*-
 
-;; Copyright © 2017–2018 Alex Kost <alezost@gmail.com>
+;; Copyright © 2017-2018 Alex Kost <alezost@gmail.com>
 
 ;; This file is part of Emacs-Guix.
 

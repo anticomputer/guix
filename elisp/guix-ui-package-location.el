@@ -1,6 +1,6 @@
 ;;; guix-ui-package-location.el --- Interface for displaying package locations  -*- lexical-binding: t -*-
 
-;; Copyright © 2016–2018 Alex Kost <alezost@gmail.com>
+;; Copyright © 2016-2018 Alex Kost <alezost@gmail.com>
 
 ;; This file is part of Emacs-Guix.
 

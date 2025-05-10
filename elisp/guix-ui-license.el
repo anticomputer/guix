@@ -1,6 +1,6 @@
 ;;; guix-ui-license.el --- Interface for displaying licenses  -*- lexical-binding: t -*-
 
-;; Copyright © 2016–2017 Alex Kost <alezost@gmail.com>
+;; Copyright © 2016-2017 Alex Kost <alezost@gmail.com>
 
 ;; This file is part of Emacs-Guix.
 

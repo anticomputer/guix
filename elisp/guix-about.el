@@ -1,6 +1,6 @@
 ;;; guix-about.el --- Various info about Guix and Emacs-Guix  -*- lexical-binding: t -*-
 
-;; Copyright © 2016–2017, 2019 Alex Kost <alezost@gmail.com>
+;; Copyright © 2016-2017, 2019 Alex Kost <alezost@gmail.com>
 
 ;; This file is part of Emacs-Guix.
 

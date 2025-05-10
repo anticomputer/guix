@@ -1,6 +1,6 @@
 ;;; guix-utils.el --- General utility functions  -*- lexical-binding: t -*-
 
-;; Copyright © 2014–2018 Alex Kost <alezost@gmail.com>
+;; Copyright © 2014-2018 Alex Kost <alezost@gmail.com>
 
 ;; This file is part of Emacs-Guix.
 

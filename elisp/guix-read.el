@@ -1,6 +1,6 @@
 ;;; guix-read.el --- Minibuffer readers  -*- lexical-binding: t -*-
 
-;; Copyright © 2015–2018 Alex Kost <alezost@gmail.com>
+;; Copyright © 2015-2018 Alex Kost <alezost@gmail.com>
 
 ;; This file is part of Emacs-Guix.
 

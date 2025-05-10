@@ -1,6 +1,6 @@
 ;;; guix-pcomplete.el --- Functions for completing guix commands  -*- lexical-binding: t -*-
 
-;; Copyright © 2015, 2017–2019 Alex Kost <alezost@gmail.com>
+;; Copyright © 2015, 2017-2019 Alex Kost <alezost@gmail.com>
 
 ;; This file is part of Emacs-Guix.
 

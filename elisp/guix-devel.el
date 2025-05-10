@@ -1,6 +1,6 @@
 ;;; guix-devel.el --- Development tools  -*- lexical-binding: t -*-
 
-;; Copyright © 2015–2018, 2020 Alex Kost <alezost@gmail.com>
+;; Copyright © 2015-2018, 2020 Alex Kost <alezost@gmail.com>
 ;; Copyright © 2018 Oleg Pykhalov <go.wigust@gmail.com>
 ;; Copyright © 2020 Maxim Cournoyer
 

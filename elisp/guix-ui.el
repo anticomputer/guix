@@ -1,6 +1,6 @@
 ;;; guix-ui.el --- Common code for Guix package management interface  -*- lexical-binding: t -*-
 
-;; Copyright © 2014–2017 Alex Kost <alezost@gmail.com>
+;; Copyright © 2014-2017 Alex Kost <alezost@gmail.com>
 
 ;; This file is part of Emacs-Guix.
 

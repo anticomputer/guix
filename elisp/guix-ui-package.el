@@ -1,6 +1,6 @@
 ;;; guix-ui-package.el --- Interface for displaying packages  -*- lexical-binding: t -*-
 
-;; Copyright © 2014–2019, 2021 Alex Kost <alezost@gmail.com>
+;; Copyright © 2014-2019, 2021 Alex Kost <alezost@gmail.com>
 
 ;; This file is part of Emacs-Guix.
 

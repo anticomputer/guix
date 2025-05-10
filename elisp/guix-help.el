@@ -1,6 +1,6 @@
 ;;; guix-help.el --- Help commands  -*- lexical-binding: t -*-
 
-;; Copyright © 2016–2019, 2021 Alex Kost <alezost@gmail.com>
+;; Copyright © 2016-2019, 2021 Alex Kost <alezost@gmail.com>
 
 ;; This file is part of Emacs-Guix.
 

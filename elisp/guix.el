@@ -1,6 +1,6 @@
 ;;; guix.el --- Interface for GNU Guix  -*- lexical-binding: t -*-
 
-;; Copyright © 2016–2019 Alex Kost <alezost@gmail.com>
+;; Copyright © 2016-2019 Alex Kost <alezost@gmail.com>
 
 ;; Author: Alex Kost <alezost@gmail.com>
 ;; Version: 0.5.2

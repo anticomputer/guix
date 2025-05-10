@@ -20,7 +20,7 @@
 ;;; Commentary:
 
 ;; This file provides 'info' interface for Guix System configuration
-;; files – i.e., for 'operating-system' declaration.
+;; files - i.e., for 'operating-system' declaration.
 
 ;;; Code:
 

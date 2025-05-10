@@ -1,6 +1,6 @@
 ;;; guix-ui-system-generation.el --- Interface for displaying system generations  -*- lexical-binding: t -*-
 
-;; Copyright © 2016–2018 Alex Kost <alezost@gmail.com>
+;; Copyright © 2016-2018 Alex Kost <alezost@gmail.com>
 
 ;; This file is part of Emacs-Guix.
 

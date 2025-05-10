@@ -1,6 +1,6 @@
 ;;; guix-hash.el --- Calculate hashes of files  -*- lexical-binding: t -*-
 
-;; Copyright © 2017–2018 Alex Kost <alezost@gmail.com>
+;; Copyright © 2017-2018 Alex Kost <alezost@gmail.com>
 
 ;; This file is part of Emacs-Guix.
 
