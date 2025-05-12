@@ -180,7 +180,7 @@ features as without Guix.
 2.11.0 or later.
 
 @item
-@uref{https://gitlab.com/alezost-emacs/bui, BUI library}, version
+@uref{https://notabug.org/alezost/emacs-bui, BUI library}, version
 1.2.0 or later.  It is used to define various ``list''/``info''
 interfaces (to display packages, generations, licenses, etc.).
 
@@ -196,7 +196,7 @@ version 0.1.4 or later.  It is used only to edit synopsis/description
 in @code{guix-devel-mode} (@pxref{Development}).
 
 @item
-@uref{https://gitlab.com/alezost-emacs/build-farm, Emacs-Build-Farm},
+@uref{https://notabug.org/alezost/emacs-build-farm, Emacs-Build-Farm},
 version 0.2.1 or later.  Emacs-Guix provides some integration features
 for this package (if it is installed), for example, @kbd{B} key in a
 list of packages (@pxref{Package Keys}).
@@ -220,8 +220,8 @@ command).  If you don't have all dependencies installed, you may use
 Manual}):
 
 @example
-$ git clone https://notabug.org/alezost/emacs-guix.git
-$ cd guix.el
+$ git clone https://codeberg.org/guix/emacs-guix.git
+$ cd emacs-guix
 $ guix environment --pure --load=guix.scm
 $ ./autogen.sh
 @end example
