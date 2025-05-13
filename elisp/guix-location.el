@@ -59,16 +59,19 @@ LOCATION is a string of the form:
 
   \"FILE:LINE:COLUMN\"
 
-If FILE is relative, it is considered to be relative to
-DIRECTORY (if it is specified and exists)."
+If FILE is relative, resolve it in the specifie DIRECTORY. If DIRECTORY
+is nil, search for FILE in repl's %load-path."
   (cl-multiple-value-bind (file line column)
       (split-string location ":")
-    (let ((file-name (if (file-name-absolute-p file)
-                         file
-                       (guix-eval-read
-                        (guix-make-guile-expression
-                         'search-load-path file)))))
-      (unless file-name         ; not found in Guile %load-path
+    (let ((file-name
+           (cond
+            (directory (expand-file-name file directory))
+            ((file-name-absolute-p file) file)
+            (t (guix-eval-read
+                (guix-make-guile-expression
+                 '%search-load-path file))))))
+
+      (unless file-name
         (error "Location file not found: %s" file))
       (find-file file-name))
     (when (and line column)
