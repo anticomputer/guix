@@ -42,7 +42,7 @@
   "Common regexp used to find command options.")
 
 (defvar guix-help-parse-command-regexp
-  (rx bol "   "
+  (rx bol (** 3 4 " ")
       (group wordchar (one-or-more (or wordchar "-"))))
   "Regexp used to find guix commands.
 \"Command\" means any option not prefixed with \"-\".  For example,
