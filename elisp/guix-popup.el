@@ -119,7 +119,7 @@
 (transient-define-prefix guix-service-popup ()
   "Show popup buffer for service commands."
   ["Show services"
-   ("a" "all system services" guix-all-services)
+   ("s" "all system services" guix-all-services)
    ("a" "all home services"   guix-all-home-services)
    ("d" "default"             guix-default-services)
    ("n" "by name"             guix-services-by-name)
