@@ -229,9 +229,7 @@ After setting this variable, you need to kill
     ,@(and guix-config-guix-scheme-directory
            (list "-L" guix-config-guix-scheme-directory
                  "-C" (or guix-config-guix-scheme-compiled-directory
-                          guix-config-guix-scheme-directory)))
-    ,@(and guix-repl-use-server
-           (list (concat "--listen=" guix-repl-current-socket)))))
+                          guix-config-guix-scheme-directory)))))
 
 (defun guix-repl-guile-program (&optional internal)
   "Return a value suitable for `geiser-guile-binary' to start Guix REPL.
@@ -299,6 +297,18 @@ display messages."
                      guix-pulled-profile
                    (append guix-system-profile "/profile")))
          repl t t)
+
+        ;; Instead of using '--listen', where the REPL server is
+        ;; created upfront before any module has been loaded, spawn
+        ;; the REPL from here *after* (emacs-guix) has been loaded.
+        ;; That way, the REPL server inherits the value of
+        ;; 'read-hash-procedures', which includes the (guix gexp)
+        ;; 'read' extensions: #~, #+, etc.
+        (when (and (not internal) guix-repl-use-server)
+          (guix-geiser-eval-in-repl-synchronously
+           (format "(start-repl-server %S)" guix-repl-current-socket)
+           repl t t))
+
         (and end-msg (message end-msg))
         (unless internal
           (run-hooks 'guix-repl-after-start-hook))))))

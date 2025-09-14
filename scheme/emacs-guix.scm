@@ -27,6 +27,8 @@
 ;;; Code:
 
 (define-module (emacs-guix)
+  #:autoload (system repl server) (spawn-server
+                                   make-unix-domain-server-socket)
   #:use-module (guix ui)
   #:autoload (guix packages) (%supported-systems)
   #:autoload (emacs-guix commands) (guix-command
@@ -79,7 +81,8 @@
   #:autoload (emacs-guix emacs) (%max-returned-list-size
                                  %temporary-directory
                                  to-emacs-side)
-  #:autoload (emacs-guix utils) (search-load-path))
+  #:autoload (emacs-guix utils) (search-load-path)
+  #:export (start-repl-server))
 
 ;; Set `guix-warning-port' here, otherwise, some output from the
 ;; guix-daemon would not be displayed in the Guix REPL.  For the same
@@ -91,5 +94,13 @@
 ;; REPL (guix-devel-mode does not use Guix REPL).  See
 ;; `guix-devel-setup-repl' elisp procedure.
 (guix-warning-port (current-warning-port))
+
+(define (start-repl-server socket-file)
+  "Spawn a REPL server listening on SOCKET-FILE, running as a separate
+thread, and with (emacs-guix) as its current module."
+  (save-module-excursion
+   (lambda ()
+     (set-current-module (resolve-module '(emacs-guix)))
+     (spawn-server (make-unix-domain-server-socket #:path socket-file)))))
 
 ;;; emacs-guix.scm ends here
